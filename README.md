@@ -2,11 +2,11 @@
 
 **Paste a job ad or recruiter message and get a calm verdict (No red flags found, Be careful, or Skip) in under a minute, with every warning sign quoted from the ad itself.**
 
-*"It's not you, it's the ad."*
-
 **[Try the demo](https://yellow-sparkle.github.io/job-ad-checker/)**: three sample ads with saved results from real checks. Nothing you type is sent anywhere.
 
 ![Job Ad Checker screenshot](docs/screenshot.png)
+
+*"It's not you, it's the ad."*
 
 ## Why it exists
 
