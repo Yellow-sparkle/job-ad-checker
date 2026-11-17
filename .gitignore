@@ -1,0 +1,42 @@
+# Job Ad Checker: what goes on GitHub
+#
+# This file works as an allow list. Everything in the folder stays private
+# unless it is named below with a "!" in front. New files (CVs, exports, test
+# runs, old versions) are private by default, so nothing leaks by accident.
+
+# 1. Hide everything at the top level of the folder
+/*
+
+# 2. Then show only these
+!/.gitignore
+!/README.md
+!/docs/
+!/app/
+!/samples/
+
+# Legal: only the pages the app itself shows. The DPIA, breach plan and the
+# signed Neon DPA stay private.
+!/legal/
+/legal/*
+!/legal/privacy.md
+!/legal/terms.md
+!/legal/ui-copy.json
+
+# Eval: the code and the two summary tables only. Run files (*.jsonl) hold the
+# full text of real job ads, so they stay private, as do drafts and eval/runs/.
+!/eval/
+/eval/*
+!/eval/*.py
+!/eval/tests/
+!/eval/HOW-TO-RUN.md
+!/eval/real-ads-final-results.md
+!/eval/unseen-v2-results.md
+
+# 3. Never publish these, wherever they are
+.env
+.env.*
+*.jsonl
+.DS_Store
+__pycache__/
+*.pyc
+.pytest_cache/

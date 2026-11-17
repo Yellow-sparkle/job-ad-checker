@@ -1,0 +1,23 @@
+{
+  "_note": "On-screen text for Job Ad Checker. Text in [brackets] is filled in by the app.",
+  "paste_privacy_note": "We don't save the text you paste or your result. To check it, we remove email addresses and phone numbers, then send it to [provider], an AI service, which deletes it within [N] days and doesn't use it for training. Please remove your own name before pasting.",
+  "paste_privacy_note_if_provider_unknown": "We don't save the text you paste or your result. To check it, we send it to an AI service under the bootcamp's account. We're confirming how long that service keeps it. Please remove your own name and contact details before pasting.",
+  "verdict_footer": "Checked with fixed rules and an AI model. This is a set of warning signs, not a guarantee or professional advice. AI notes can be wrong, and a scam can pass every check. You decide whether to apply.",
+  "verdict_no_red_flags_extra": "No red flags found doesn't mean safe. Never pay to get a job, and never send ID or bank details before a real interview.",
+  "ai_note_label": "AI note",
+  "skip_next_steps": "Stop replying, and don't send documents or money. Report it to {official_channel}. If you're a student, your university's student support or advice team can help you decide what to do next.",
+  "share_text": "This message shows {n} scam warning signs. Checked with Job Ad Checker: {link}",
+  "footer_links": [
+    "Terms|/terms",
+    "Privacy|/privacy"
+  ],
+  "paste_button_label": "Paste",
+  "paste_button_note": "Tap Paste to add the message you copied. We read your clipboard only when you tap, and we don't save what's in it.",
+  "install_hint": "Add Job Ad Checker to your home screen. On Android, you can then share a message straight to it from WhatsApp, Telegram or LinkedIn.",
+  "share_received_note": "Shared text added. Like pasted text, we don't save it.",
+  "sample_ads_label": "Try a sample ad",
+  "sample_ads_note": "These ads are made up, so you can see how the checker works without pasting anything real.",
+  "about_line": "A free personal project for English speakers anywhere. Not a commercial service.",
+  "ai_tone_line_note": "Note: This ad includes a line aimed at AI tools ('{quote}'). We ignored it. Our check is based only on what the ad says about the job. If you're unsure, find the job on the employer's own website before sharing personal details.",
+  "ai_hide_line_warning": "Warning: This text tells AI tools to hide problems ('{quote}'). That is a warning sign in itself. We ignored the instruction."
+}

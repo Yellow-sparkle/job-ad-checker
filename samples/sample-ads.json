@@ -1,0 +1,26 @@
+{
+  "_note": "Made-up sample ads for the 'Try a sample ad' buttons. Companies, sites and phone numbers are invented. 'expected' is what the checker should show.",
+  "samples": [
+    {
+      "id": "SAMPLE-1",
+      "button": "A genuine-looking ad",
+      "text": "Library Assistant - Northbrook Public Libraries (Harrogate)\nPart-time, 22.5 hours a week including alternate Saturdays. £12.85 per hour.\nYou'll help visitors find books and use the public computers, run the weekly toddler rhyme time and keep the shelves in order. No library experience needed; we value friendliness and patience.\nHow to apply: complete the form on northbrook-libraries.org.uk/jobs. Shortlisted applicants are invited to a 30-minute interview at Harrogate Central Library.\nClosing date: 5 December. Posted 4 days ago.",
+      "suggested_taps": {"who_contacted": "I applied", "money_or_id": "None", "interview_stage": "None yet", "posting_age_days": 4},
+      "expected": {"verdict": "No red flags found", "must_fire": [], "notes": "No flags, no ghost notes; must not use the word 'safe'."}
+    },
+    {
+      "id": "SAMPLE-2",
+      "button": "A possible ghost job",
+      "text": "Join the Kestrel Freight talent pipeline!\nKestrel Freight (Felixstowe) is always looking for great logistics coordinators. There are no open coordinator roles right now, but by joining our talent pool you'll be first in line when future opportunities come up.\nUpload your CV and we'll keep it on file for up to 12 months. Our recruitment team will contact you if a suitable role opens.\nPosted 45 days ago.",
+      "suggested_taps": {"who_contacted": "I applied", "money_or_id": "None", "interview_stage": "None yet", "posting_age_days": 45},
+      "expected": {"verdict": "Be careful", "must_fire": ["GHOST_TALENT_POOL"], "notes": "Talent-pool note ('probably a ghost job') plus the 30+ days age note. No scam flags."}
+    },
+    {
+      "id": "SAMPLE-3",
+      "button": "A likely scam",
+      "text": "Hi! Your CV was shortlisted for our Remote Product Tester role, £320 a week for 10 hours of testing at home. No interview needed, you can start this Monday.\nBefore we send your first products, you need our Tester Starter Kit (£79, refunded with your first payment). Pay by bank transfer to the account our coordinator sends you.\nPlease message our coordinator on WhatsApp at +44 7700 900123 within 24 hours to keep your place.",
+      "suggested_taps": {"who_contacted": "They contacted me", "money_or_id": "Money asked", "interview_stage": "None yet", "posting_age_days": null},
+      "expected": {"verdict": "Skip", "must_fire": ["SURE_ADVANCE_FEE"], "notes": "Also likely WEAK_NO_INTERVIEW, WEAK_CHAT_APP, WEAK_URGENCY and WEAK_NO_EMPLOYER_NAMED. +44 7700 900xxx is an Ofcom drama number, so it's never a real phone."}
+    }
+  ]
+}

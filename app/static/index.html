@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Ad Checker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap">
+<style>
+/* Direction 4: Cerulean (the 17 colours from the chosen design) */
+:root{
+  --ink:#14212B; --ink2:#3C4852; --ink3:#4F5D68; --white:#FFFFFF;
+  --cerulean:#007BA7; --cerulean-dark:#005A7A; --red:#C2412D;
+  --page:#F4F9FC; --hero:#D6E8F2; --field:#EAF3F8; --chip:#DCEBF3; --chip2:#DCEEF7;
+  --panel:#E3F0F7; --line:#E5EEF3; --outline:#B8CCD8; --red-soft:#FBE3DA; --red-softer:#FFF1EC;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);font-size:16px;line-height:1.55}
+a{color:var(--cerulean)}a:hover{color:var(--cerulean-dark)}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid var(--cerulean);outline-offset:2px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.hidden{display:none !important}
+header.top{background:var(--white);border-bottom:1px solid var(--line)}
+header.top .wrap{padding-top:14px;padding-bottom:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;background:none;border:0;padding:4px 0;color:var(--ink)}
+.logo{width:34px;height:34px;border-radius:999px;background:var(--cerulean);color:var(--white);display:flex;align-items:center;justify-content:center}
+.brand b{font-weight:700;font-size:18px}
+nav{margin-left:auto;display:flex;gap:20px;font-size:14px}
+nav a{color:var(--ink2);text-decoration:none}
+.hero{background:var(--hero)}
+.hero .wrap{padding-top:56px;padding-bottom:64px;display:flex;flex-wrap:wrap;gap:48px;align-items:center}
+.eyebrow{margin:0 0 12px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cerulean-dark)}
+h1.big{margin:0 0 18px;font-size:clamp(44px,6vw,72px);line-height:1;font-weight:800;letter-spacing:-.035em}
+h1.big em{font-style:italic;color:var(--cerulean)}
+.lede{margin:0 0 24px;color:var(--ink2);font-size:18px;max-width:460px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font-size:14px;background:var(--white);color:var(--ink2);border-radius:999px;padding:6px 14px}
+.card{background:var(--white);border-radius:28px;padding:18px;box-shadow:0 10px 30px rgba(20,60,90,.10)}
+.pastecard{flex:1 1 460px;min-width:0}
+.pastecard label{display:block;font-size:14px;font-weight:600;color:var(--ink2);margin:2px 6px 10px}
+textarea{width:100%;height:220px;resize:vertical;border:0;border-radius:20px;background:var(--field);padding:16px 18px;font-family:inherit;font-size:16px;color:var(--ink)}
+.meta{display:flex;justify-content:space-between;align-items:center;margin:8px 6px 14px;font-size:13px;color:var(--ink3);gap:8px}
+.msg{margin:0 0 12px;font-size:14px;color:var(--ink);border-radius:16px;padding:9px 14px;background:var(--panel)}
+.msg.err{background:var(--red-soft)}
+.primary{width:100%;height:56px;border:0;border-radius:999px;background:var(--red);color:var(--white);font-size:17px;font-weight:700}
+.primary:disabled{background:var(--outline);color:var(--ink);cursor:not-allowed}
+.ghostbtn{min-height:44px;padding:8px 18px;border-radius:999px;border:1.5px solid var(--outline);background:var(--white);color:var(--ink);font-size:14px;font-weight:600}
+.linkbtn{background:none;border:0;color:var(--ink2);font-size:14px;text-decoration:underline;text-underline-offset:3px;min-height:44px}
+.smallbtn{min-height:36px;padding:4px 14px;border-radius:999px;border:0;background:var(--chip);color:var(--ink);font-size:13px;font-weight:600}
+.note{margin:0;font-size:14px;color:var(--ink2);background:var(--panel);border-radius:20px;padding:12px 16px}
+section.samples{padding-top:32px;padding-bottom:8px}
+.label-up{margin:0 0 12px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.narrow{max-width:680px;margin:0 auto;padding:40px 24px 56px}
+h1.mid{margin:0 0 8px;font-size:clamp(34px,5vw,48px);line-height:1.05;font-weight:800;letter-spacing:-.03em}
+.muted{color:var(--ink3)}
+fieldset{margin:0 0 14px;border:0;border-radius:24px;background:var(--white);padding:20px;box-shadow:0 6px 20px rgba(20,60,90,.08)}
+legend{float:left;width:100%;padding:0;margin:0 0 14px;font-weight:700;font-size:18px}
+.opts{clear:both;display:flex;flex-wrap:wrap;gap:8px}
+.opt{min-height:44px;padding:8px 18px;border-radius:999px;border:0;background:var(--field);color:var(--ink);font-size:15px;font-weight:500}
+.opt[aria-pressed=true]{background:var(--red);color:var(--white);font-weight:600}
+.cta{height:56px;padding:0 40px;border:0;border-radius:999px;background:var(--red);color:var(--white);font-size:17px;font-weight:700}
+.checking{max-width:520px;margin:0 auto;padding:96px 24px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.spin{width:104px;height:104px;border-radius:999px;border:3px solid var(--chip);border-top-color:var(--cerulean);animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.rise{animation:rise .35s ease-out both}
+.result{padding-top:32px;padding-bottom:56px}
+.cols{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+.left{flex:3 1 460px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.right{flex:2 1 340px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.verdict{color:var(--white);border-radius:28px;padding:26px 28px}
+.verdict .k{margin:0;font-size:14px}
+.verdict .v{margin:4px 0 8px;font-size:clamp(44px,7vw,64px);line-height:1;font-weight:800;letter-spacing:-.03em}
+.verdict .s{margin:0;font-size:17px;color:var(--red-softer)}
+.v-skip{background:#B42318}.v-skip .k{color:var(--red-soft)}
+.v-careful{background:#F5B700;color:#14212B}.v-careful .k{color:#3C2A00}
+.v-ok{background:#1B7A43}.v-ok .k{color:#D7F3E2}
+.v-careful .s{color:#2B1F00}.v-ok .s{color:#EAF8EF}
+.v-none{background:var(--ink2)}.v-none .k{color:var(--chip)}
+.notyou{margin:2px 8px;font-style:italic;font-weight:700;font-size:22px;color:var(--cerulean)}
+.panel{background:var(--white);border-radius:24px;padding:12px 22px;box-shadow:0 6px 20px rgba(20,60,90,.08)}
+.panel h2{margin:10px 0 4px;font-size:20px;font-weight:700}
+.reasons{list-style:none;margin:0;padding:0}
+.reasons li{border-bottom:1px solid var(--line)}
+.reasons li:last-child{border-bottom:0}
+.rbtn{width:100%;min-height:48px;display:flex;align-items:flex-start;gap:10px;padding:12px 0;background:none;border:0;text-align:left;color:var(--ink);font-size:16px}
+.rbtn span.t{flex:1;font-weight:500}
+.ai{font-size:12px;font-weight:600;color:var(--cerulean);background:var(--chip2);border-radius:999px;padding:2px 9px;margin-left:8px;white-space:nowrap}
+.more{margin:0 0 12px;font-size:15px;color:var(--ink2);background:var(--field);border-radius:16px;padding:12px 14px}
+.quote{display:block;margin-top:8px;font-style:italic;color:var(--ink)}
+.chips{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.chip{font-size:14px;font-weight:600;color:var(--cerulean-dark);background:var(--chip2);border-radius:999px;padding:4px 12px}
+.chip.no{font-weight:400;color:var(--ink3);background:var(--line);text-decoration:line-through}
+.sig{font-size:14px;color:var(--ink2);background:var(--chip);border-radius:999px;padding:5px 14px}
+.footer-note{margin:4px 8px 0;font-size:12px;line-height:1.55;color:var(--ink3)}
+.next{background:var(--panel);border-radius:24px;padding:20px 22px}
+.next h2{margin:0 0 8px;font-size:20px;font-weight:700}
+.country{min-height:38px;padding:6px 16px;border:0;border-radius:999px;background:var(--white);color:var(--ink);font-size:13px}
+.country[aria-pressed=true]{background:var(--ink);color:var(--white);font-weight:600}
+.report{display:flex;align-items:center;justify-content:center;min-height:50px;padding:0 16px;border-radius:999px;background:var(--red);color:var(--white);font-weight:600;text-decoration:none;text-align:center;margin-top:12px}
+.report:hover{color:var(--white)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.fill{height:52px;border:0;border-radius:999px;background:var(--red);color:var(--white);font-size:16px;font-weight:600}
+.outline{height:52px;border:1.5px solid var(--outline);border-radius:999px;background:transparent;color:var(--ink);font-size:16px;font-weight:600}
+footer{margin-top:auto;border-top:1px solid var(--line);background:var(--white)}
+footer .wrap{padding-top:16px;padding-bottom:16px;display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink3)}
+footer a{color:var(--ink3)}
+.page{min-height:100vh;display:flex;flex-direction:column}
+@media (max-width:600px){.wrap{padding:0 16px}.hero .wrap{padding-top:32px;padding-bottom:40px}.narrow{padding:28px 16px 40px}}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="top"><div class="wrap">
+  <button class="brand" id="home" aria-label="Job Ad Checker home">
+    <span class="logo"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+    <b>Job Ad Checker</b>
+  </button>
+  <nav aria-label="Site"><a href="/terms">Terms</a><a href="/privacy">Privacy</a></nav>
+</div></header>
+
+<main style="flex:1">
+<!-- HOME -->
+<div id="s-home">
+  <section class="hero"><div class="wrap">
+    <div style="flex:1 1 400px;min-width:0">
+      <p class="eyebrow">Check before you apply</p>
+      <h1 class="big">Is this job <em>real?</em></h1>
+      <p class="lede">Paste it here and take a breath. In under a minute you'll see what we found.</p>
+      <div class="pills"><span class="pill">Free</span><span class="pill">No sign-up</span><span class="pill">Under a minute</span></div>
+    </div>
+    <div class="card pastecard">
+      <label for="paste">Job ad, recruiter message or offer letter</label>
+      <textarea id="paste" placeholder="Paste the job ad, recruiter message or offer letter"></textarea>
+      <div class="meta"><span>English only for now</span>
+        <span style="display:flex;align-items:center;gap:10px"><button class="smallbtn" id="pastebtn" type="button">Paste</button><span id="count">0 / 10,000</span></span></div>
+      <p class="msg hidden" id="m-short" role="status">Paste a bit more. We need at least 100 characters.</p>
+      <p class="msg hidden" id="m-long" role="status">That's over 10,000 characters. We'll check the first 10,000 characters.</p>
+      <p class="msg err hidden" id="m-err" role="alert"></p>
+      <button class="primary" id="check" disabled>Check it</button>
+      <div style="text-align:center"><button class="linkbtn" id="privtoggle" aria-expanded="false">We don't save the text you paste</button></div>
+      <p class="note hidden rise" id="privnote"></p>
+    </div>
+  </div></section>
+  <section class="samples wrap" aria-label="Sample ads">
+    <p class="label-up" id="samplelabel">Try a sample ad</p>
+    <p class="muted" style="margin:-6px 0 12px;font-size:14px" id="samplenote"></p>
+    <div class="row" id="samples"></div>
+  </section>
+</div>
+
+<!-- QUESTIONS -->
+<div id="s-questions" class="hidden">
+  <div class="narrow rise">
+    <div style="margin-bottom:20px"><button class="ghostbtn" id="back1">&larr; Back</button></div>
+    <h1 class="mid">A few quick questions</h1>
+    <p class="muted" style="margin:0 0 24px">They help us read the text. Skip any you're unsure about.</p>
+    <div id="questions"></div>
+    <div style="margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+      <button class="cta" id="seeresult">See result</button>
+      <p class="muted" style="margin:0;font-size:14px">No answer is required. A blank card counts as Not sure.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKING -->
+<div id="s-checking" class="hidden">
+  <div class="checking">
+    <div class="spin" aria-hidden="true"></div>
+    <h1 role="status" style="margin:26px 0 4px;font-size:40px;font-weight:800;letter-spacing:-.03em">Checking…</h1>
+    <p class="muted">Usually under 30 seconds</p>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div id="s-result" class="hidden">
+  <div class="wrap result rise">
+    <div style="margin-bottom:20px"><button class="ghostbtn" id="back2">&larr; Check another</button></div>
+    <p class="msg hidden" id="r-long">We checked the first 10,000 characters.</p>
+    <p class="msg hidden" id="r-saved">This is a saved result for this made-up sample, so no new AI check was needed.</p>
+    <div class="cols">
+      <div class="left">
+        <section aria-label="Verdict" class="verdict" id="r-verdict"><p class="k">Our verdict</p><p class="v" id="r-v"></p><p class="s" id="r-s"></p></section>
+        <p class="notyou hidden" id="r-notyou">It's not you, it's the ad.</p>
+        <section class="panel hidden" id="r-why" aria-label="Why"><h2>Why</h2><ul class="reasons" id="r-reasons"></ul></section>
+        <section class="panel hidden" id="r-notes" aria-label="Notes"><h2>Worth knowing</h2><div id="r-notelist"></div></section>
+        <p class="note hidden" id="r-okextra" style="background:var(--white);box-shadow:0 6px 20px rgba(20,60,90,.08);border-radius:24px;padding:16px 22px"></p>
+        <section class="panel hidden" id="r-found" aria-label="We found" style="padding:16px 22px">
+          <div class="chips" id="r-chips"><span style="font-weight:700;font-size:15px;margin-right:4px">We found:</span></div>
+          <div class="hidden" id="r-partial" style="margin-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:12px;font-size:15px;color:var(--ink2);background:var(--panel);border-radius:20px;padding:12px 16px">
+            <span style="flex:1 1 240px">You may have pasted only part of the ad. Paste the full ad for a better check.</span>
+            <button class="smallbtn" id="pasteagain" style="background:var(--ink);color:var(--white)">Paste again</button>
+          </div>
+        </section>
+        <section class="panel hidden" id="r-signals" aria-label="Job-search signals" style="padding:16px 22px">
+          <h2 style="margin:0 0 10px;font-size:15px">Job-search signals <span style="font-weight:400;color:var(--ink3)">(signals, not a verdict)</span></h2>
+          <div class="row" id="r-siglist" style="gap:8px"></div>
+        </section>
+        <p class="footer-note hidden" id="r-checked"></p>
+        <p class="footer-note" id="r-footer"></p>
+      </div>
+      <div class="right">
+        <section class="next hidden" id="r-next" aria-label="What to do next">
+          <h2>What to do next</h2>
+          <p style="margin:0 0 14px;font-size:15px;color:var(--ink2)" id="r-nexttext"></p>
+          <div role="group" aria-label="Where are you?" class="row" style="gap:6px" id="r-countries"></div>
+          <a class="report" id="r-report" target="_blank" rel="noopener noreferrer"></a>
+        </section>
+        <div class="two">
+          <button class="fill" id="copy">Copy result</button>
+          <button class="outline" id="again">Check another</button>
+        </div>
+        <p class="msg hidden" id="copied" role="status">Copied.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer><div class="wrap"><a href="/terms">Terms</a><a href="/privacy">Privacy</a><span id="about"></span></div></footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var UI = {}, samples = [], answers = {}, last = null, country = "Somewhere else";
+  var MIN = 100, MAX = 10000;
+
+  var QUESTIONS = [
+    { id: "who_contacted", q: "How did this start?", opts: [["I applied", "I found it"], ["They contacted me", "They contacted me"], ["Not sure", "Not sure"]] },
+    { id: "money_or_id", q: "Did they ask for money or ID?", opts: [["None", "Nothing asked"], ["Money asked", "Money"], ["ID asked", "ID or bank details"], ["Both", "Both"], ["Not sure", "Not sure"]] },
+    { id: "interview_stage", q: "How far along are you?", opts: [["None yet", "No interview yet"], ["Interview booked", "Interview booked"], ["Offer", "I have an offer"], ["Not sure", "Not sure"]] },
+    { id: "posting_age_days", q: "When was it posted?", opts: [[3, "This week"], [14, "1–4 weeks ago"], [45, "1–2 months ago"], [75, "Over 2 months ago"], ["Not sure", "Not sure"]] }
+  ];
+  var CHANNELS = {
+    UK: { name: "Action Fraud", url: "https://www.actionfraud.police.uk/" },
+    US: { name: "the FTC at ReportFraud.ftc.gov", short: "the FTC", url: "https://reportfraud.ftc.gov/" },
+    Canada: { name: "the Canadian Anti-Fraud Centre", short: "the CAFC", url: "https://antifraudcentre-centreantifraude.ca/" },
+    Australia: { name: "Scamwatch", url: "https://www.scamwatch.gov.au/report-a-scam" },
+    // Any country, English only (Kate, 15 Nov): the four above are examples, not the scope
+    "Somewhere else": { name: "the police or the fraud or consumer protection service in your country" }
+  };
+
+  function show(screen) {
+    ["home", "questions", "checking", "result"].forEach(function (s) { $("s-" + s).classList.toggle("hidden", s !== screen); });
+    window.scrollTo(0, 0);
+  }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+
+  // ---------- home ----------
+  function onText() {
+    var n = $("paste").value.length;
+    $("count").textContent = n.toLocaleString("en-GB") + " / 10,000";
+    $("m-short").classList.toggle("hidden", !(n > 0 && n < MIN));
+    $("m-long").classList.toggle("hidden", n <= MAX);
+    $("m-err").classList.add("hidden");
+    $("check").disabled = $("paste").value.trim().length < MIN && !/https?:\/\//.test($("paste").value);
+  }
+  $("paste").addEventListener("input", onText);
+  $("pastebtn").addEventListener("click", function () {
+    if (!navigator.clipboard || !navigator.clipboard.readText) { $("paste").focus(); return; }
+    navigator.clipboard.readText().then(function (t) { $("paste").value = t; onText(); }).catch(function () { $("paste").focus(); });
+  });
+  $("privtoggle").addEventListener("click", function () {
+    var open = $("privnote").classList.toggle("hidden") === false;
+    this.setAttribute("aria-expanded", String(open));
+  });
+  $("check").addEventListener("click", function () { renderQuestions(); show("questions"); });
+  $("home").addEventListener("click", reset);
+  $("back1").addEventListener("click", function () { show("home"); });
+  $("back2").addEventListener("click", reset);
+  $("again").addEventListener("click", reset);
+  $("pasteagain").addEventListener("click", function () { show("home"); $("paste").focus(); });
+
+  function reset() { $("paste").value = ""; answers = {}; onText(); show("home"); }
+
+  // ---------- questions ----------
+  function renderQuestions() {
+    var box = $("questions"); box.innerHTML = "";
+    QUESTIONS.forEach(function (q) {
+      var fs = el("fieldset"); fs.appendChild(el("legend", null, q.q));
+      var opts = el("div", "opts");
+      q.opts.forEach(function (o) {
+        var b = el("button", "opt", o[1]); b.type = "button";
+        b.setAttribute("aria-pressed", String(answers[q.id] === o[0]));
+        b.addEventListener("click", function () { answers[q.id] = o[0]; renderQuestions(); });
+        opts.appendChild(b);
+      });
+      fs.appendChild(opts); box.appendChild(fs);
+    });
+  }
+  $("seeresult").addEventListener("click", runCheck);
+
+  function runCheck() {
+    show("checking");
+    var taps = {};
+    QUESTIONS.forEach(function (q) { var a = answers[q.id]; taps[q.id] = (a === undefined || a === "Not sure") ? (q.id === "posting_age_days" ? null : "Not sure") : a; });
+    fetch("/api/check", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ text: $("paste").value, taps: taps }) })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) {
+        if (!x.ok) { throw new Error(x.j.error || "Something went wrong."); }
+        last = x.j; renderResult(x.j); show("result");
+      })
+      .catch(function (e) { show("home"); $("m-err").textContent = e.message || "Couldn't reach the checker. Is it still running?"; $("m-err").classList.remove("hidden"); });
+  }
+
+  // ---------- result ----------
+  function renderResult(r) {
+    var cls = { "Skip": "v-skip", "Be careful": "v-careful", "No red flags found": "v-ok" }[r.verdict] || "v-none";
+    $("r-verdict").className = "verdict " + cls;
+    $("r-v").textContent = r.verdict.replace(/ \(.*\)$/, "");
+    $("r-s").textContent = r.verdict_sub;
+    $("r-notyou").classList.toggle("hidden", !r.not_you);
+    $("r-long").classList.toggle("hidden", !r.truncated);
+    $("r-saved").classList.toggle("hidden", !r.saved_sample);
+
+    var ul = $("r-reasons"); ul.innerHTML = "";
+    r.reasons.forEach(function (x) {
+      var li = el("li"), b = el("button", "rbtn"); b.setAttribute("aria-expanded", "false");
+      var t = el("span", "t", x.title); if (x.ai) t.appendChild(el("span", "ai", UI.ai_note_label || "AI note"));
+      b.appendChild(t);
+      b.insertAdjacentHTML("beforeend", '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4F5D68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:3px"><path d="M6 9l6 6 6-6"/></svg>');
+      var more = el("p", "more hidden rise");
+      if (x.means) { var s = el("strong", null, "What this means: "); s.style.fontWeight = "600"; more.appendChild(s); more.appendChild(document.createTextNode(x.means)); }
+      if (x.quote && !x.quote_in_title) more.appendChild(el("span", "quote", "From the text: “" + x.quote + "”"));
+      b.addEventListener("click", function () { var open = more.classList.toggle("hidden") === false; b.setAttribute("aria-expanded", String(open)); });
+      li.appendChild(b); li.appendChild(more); ul.appendChild(li);
+    });
+    $("r-why").classList.toggle("hidden", r.reasons.length === 0);
+
+    var nl = $("r-notelist"); nl.innerHTML = "";
+    (r.weak_notes || []).forEach(function (w) {
+      var p = el("p", "more", w.text + " " + (w.means || "")); if (w.quote) p.appendChild(el("span", "quote", "From the text: “" + w.quote + "”")); nl.appendChild(p);
+    });
+    (r.notes || []).forEach(function (n) {
+      var p = el("p", "more", n.text); if (n.quote) p.appendChild(el("span", "quote", "From the text: “" + n.quote + "”")); nl.appendChild(p);
+    });
+    $("r-notes").classList.toggle("hidden", nl.children.length === 0);
+
+    var ok = r.verdict === "No red flags found";
+    $("r-okextra").textContent = UI.verdict_no_red_flags_extra || "";
+    $("r-okextra").classList.toggle("hidden", !ok);
+
+    var chips = $("r-chips"); while (chips.children.length > 1) chips.removeChild(chips.lastChild);
+    var f = r.found || {}, any = false;
+    [["company", "Company"], ["role", "Role"], ["contact", "How to apply"], ["posted", "Posting date"]].forEach(function (k) {
+      if (!(k[0] in f)) return; any = true;
+      chips.appendChild(el("span", f[k[0]] ? "chip" : "chip no", f[k[0]] ? k[1] + ": " + f[k[0]] : k[1]));
+    });
+    $("r-partial").classList.toggle("hidden", !r.partial);
+    $("r-found").classList.toggle("hidden", !any);
+
+    var sl = $("r-siglist"); sl.innerHTML = "";
+    (r.signals || []).forEach(function (s) { sl.appendChild(el("span", "sig", s.text)); });
+    $("r-signals").classList.toggle("hidden", !(r.signals || []).length);
+
+    $("r-checked").textContent = r.what_we_checked || "";
+    $("r-checked").classList.toggle("hidden", !(ok && r.what_we_checked));
+    $("r-footer").textContent = UI.verdict_footer || "";
+    $("r-footer").classList.toggle("hidden", !r.what_we_checked);
+
+    $("r-next").classList.toggle("hidden", r.verdict !== "Skip");
+    renderCountry();
+  }
+
+  function renderCountry() {
+    var c = CHANNELS[country];
+    $("r-nexttext").textContent = (UI.skip_next_steps || "").replace("{official_channel}", c.name);
+    $("r-report").textContent = "Report this scam to " + (c.short || c.name);
+    $("r-report").classList.toggle("hidden", !c.url);
+    if (c.url) $("r-report").href = c.url;
+    var box = $("r-countries"); box.innerHTML = "";
+    Object.keys(CHANNELS).forEach(function (k) {
+      var b = el("button", "country", k); b.type = "button"; b.setAttribute("aria-pressed", String(k === country));
+      b.addEventListener("click", function () { country = k; renderCountry(); });
+      box.appendChild(b);
+    });
+  }
+
+  $("copy").addEventListener("click", function () {
+    if (!last) return;
+    var done = function () { $("copied").classList.remove("hidden"); setTimeout(function () { $("copied").classList.add("hidden"); }, 2000); };
+    if (navigator.clipboard) navigator.clipboard.writeText(last.result_text).then(done, done);
+  });
+
+  // ---------- start ----------
+  fetch("/api/config").then(function (r) { return r.json(); }).then(function (cfg) {
+    UI = cfg.ui; samples = cfg.samples;
+    $("privnote").textContent = cfg.privacy_note;
+    $("samplelabel").textContent = UI.sample_ads_label;
+    $("samplenote").textContent = UI.sample_ads_note;
+    $("about").textContent = UI.about_line;
+    $("pastebtn").title = UI.paste_button_note;
+    var box = $("samples");
+    samples.forEach(function (s) {
+      var b = el("button", "ghostbtn", s.label); b.type = "button";
+      b.addEventListener("click", function () {
+        $("paste").value = s.text; onText();
+        answers = {};
+        if (s.taps) {
+          answers.who_contacted = s.taps.who_contacted; answers.money_or_id = s.taps.money_or_id; answers.interview_stage = s.taps.interview_stage;
+          var d = s.taps.posting_age_days; answers.posting_age_days = d == null ? "Not sure" : (d < 7 ? 3 : d < 30 ? 14 : d < 60 ? 45 : 75);
+        }
+        $("paste").focus();
+      });
+      box.appendChild(b);
+    });
+    if (!cfg.key_set) { $("m-err").textContent = "The AI key isn't set, so checks won't work yet. See app/README.md, step 3."; $("m-err").classList.remove("hidden"); }
+  });
+  onText();
+})();
+</script>
+</body>
+</html>

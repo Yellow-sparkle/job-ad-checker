@@ -1,0 +1,221 @@
+{
+ "checker_prompt_version": "checker-prompt-v8 (2026-11-16)",
+ "checker_version": "app-0.3.3 (2026-11-16)",
+ "model": "claude-sonnet-5-5",
+ "samples": [
+  {
+   "id": "SAMPLE-1",
+   "text": "Library Assistant - Northbrook Public Libraries (Harrogate)\nPart-time, 22.5 hours a week including alternate Saturdays. £12.85 per hour.\nYou'll help visitors find books and use the public computers, run the weekly toddler rhyme time and keep the shelves in order. No library experience needed; we value friendliness and patience.\nHow to apply: complete the form on northbrook-libraries.org.uk/jobs. Shortlisted applicants are invited to a 30-minute interview at Harrogate Central Library.\nClosing date: 5 December. Posted 4 days ago.",
+   "taps": {
+    "who_contacted": "I applied",
+    "money_or_id": "None",
+    "interview_stage": "None yet",
+    "posting_age_days": 4
+   },
+   "result": {
+    "verdict": "No red flags found",
+    "verdict_sub": "We didn't find any of the warning signs we check for.",
+    "not_you": false,
+    "reasons": [],
+    "weak_notes": [],
+    "notes": [],
+    "signals": [],
+    "found": {
+     "company": "Northbrook Public Libraries",
+     "role": "Library Assistant",
+     "contact": "online form on the employer's website",
+     "posted": "4 days ago"
+    },
+    "partial": false,
+    "truncated": false,
+    "what_we_checked": "We checked for upfront fees, gift-card or crypto payments, fake checks, paid-task schemes, early requests for ID or bank details, free email addresses for named companies, group chats and chat apps, shortened links, hiring without an interview, pressure to hurry, AI-aimed lines, and ghost-job signs. We didn't check the company itself.",
+    "message": "",
+    "fired": [],
+    "extraction": "company=Northbrook Public Libraries; role=Library Assistant; duty=help visitors, run rhyme time, keep shelves in order; contact=online form on the employer's website; posted=4 days; stage=none yet; money_or_id=none",
+    "raw_llm_output": "{\"language\":\"english\",\"input_type\":\"job_ad\",\"looks_partial\":false,\"employer_name\":\"Northbrook Public Libraries\",\"role\":\"Library Assistant\",\"main_duty\":\"help visitors, run rhyme time, keep shelves in order\",\"contact_channel\":\"online form on the employer's website\",\"posting_age_days\":4,\"interview_stage\":\"none_yet\",\"money_or_id_requested\":\"\",\"findings\":[],\"criminal_record_check_fee\":{\"present\":false,\"after_interview_or_offer\":false,\"amount_gbp\":null,\"paid_to_official_or_employer\":false,\"asked_by_agency\":false,\"quote\":\"\"}}",
+    "usage": {
+     "input_tokens": 216,
+     "output_tokens": 210,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 3991,
+     "latency_s": 2.96,
+     "cost_usd": 0.012509,
+     "model": "claude-sonnet-5-5"
+    },
+    "injection_noted": false,
+    "dropped_findings": [],
+    "input_type": "job_ad",
+    "rules_only": false,
+    "saved_sample": false,
+    "result_text": "Our verdict: No red flags found\nWe didn't find any of the warning signs we check for.\nNo red flags found doesn't mean safe. Never pay to get a job, and never send ID or bank details before a real interview.\nWe checked for upfront fees, gift-card or crypto payments, fake checks, paid-task schemes, early requests for ID or bank details, free email addresses for named companies, group chats and chat apps, shortened links, hiring without an interview, pressure to hurry, AI-aimed lines, and ghost-job signs. We didn't check the company itself.\nChecked with fixed rules and an AI model. This is a set of warning signs, not a guarantee or professional advice. AI notes can be wrong, and a scam can pass every check. You decide whether to apply."
+   }
+  },
+  {
+   "id": "SAMPLE-2",
+   "text": "Join the Kestrel Freight talent pipeline!\nKestrel Freight (Felixstowe) is always looking for great logistics coordinators. There are no open coordinator roles right now, but by joining our talent pool you'll be first in line when future opportunities come up.\nUpload your CV and we'll keep it on file for up to 12 months. Our recruitment team will contact you if a suitable role opens.\nPosted 45 days ago.",
+   "taps": {
+    "who_contacted": "I applied",
+    "money_or_id": "None",
+    "interview_stage": "None yet",
+    "posting_age_days": 45
+   },
+   "result": {
+    "verdict": "Be careful",
+    "verdict_sub": "We found 1 warning sign. Check it before you apply.",
+    "not_you": true,
+    "reasons": [
+     {
+      "rule_id": "GHOST_TALENT_POOL",
+      "title": "Talent-pool wording: this is probably a ghost job, not an open vacancy.",
+      "means": "'Talent pool' or 'future opportunities' wording usually means there's no job open right now. Your CV may sit on file without anyone reading it.",
+      "quote": "There are no open coordinator roles right now, but by joining our talent pool you'll be first in line when future opportunities come up",
+      "source": "text",
+      "ai": false
+     }
+    ],
+    "weak_notes": [],
+    "notes": [],
+    "signals": [
+     {
+      "rule_id": "GHOST_AGE_OVER_30",
+      "text": "Posted 30+ days ago. Ghost jobs are more common at this age."
+     }
+    ],
+    "found": {
+     "company": "Kestrel Freight",
+     "role": "Logistics coordinator",
+     "contact": "CV upload",
+     "posted": "45 days ago"
+    },
+    "partial": false,
+    "truncated": false,
+    "what_we_checked": "We checked for upfront fees, gift-card or crypto payments, fake checks, paid-task schemes, early requests for ID or bank details, free email addresses for named companies, group chats and chat apps, shortened links, hiring without an interview, pressure to hurry, AI-aimed lines, and ghost-job signs. We didn't check the company itself.",
+    "message": "",
+    "fired": [
+     "GHOST_TALENT_POOL",
+     "GHOST_AGE_OVER_30"
+    ],
+    "extraction": "company=Kestrel Freight; role=Logistics coordinator; duty=not stated; contact=CV upload; posted=45 days; stage=none yet; money_or_id=none",
+    "raw_llm_output": "{\"language\":\"english\",\"input_type\":\"job_ad\",\"looks_partial\":false,\"employer_name\":\"Kestrel Freight\",\"role\":\"Logistics coordinator\",\"main_duty\":\"\",\"contact_channel\":\"CV upload\",\"posting_age_days\":45,\"interview_stage\":\"none_yet\",\"money_or_id_requested\":\"\",\"findings\":[{\"sign\":\"TALENT_POOL\",\"quote\":\"There are no open coordinator roles right now, but by joining our talent pool you'll be first in line when future opportunities come up.\",\"note\":\"The text says no coordinator roles are open now and asks you to join a pool for future roles.\",\"pattern\":\"none\"}],\"criminal_record_check_fee\":{\"present\":false,\"after_interview_or_offer\":false,\"amount_gbp\":null,\"paid_to_official_or_employer\":false,\"asked_by_agency\":false,\"quote\":\"\"}}",
+    "usage": {
+     "input_tokens": 160,
+     "output_tokens": 283,
+     "cache_read_input_tokens": 3991,
+     "cache_creation_input_tokens": 0,
+     "latency_s": 2.61,
+     "cost_usd": 0.003549,
+     "model": "claude-sonnet-5-5"
+    },
+    "injection_noted": false,
+    "dropped_findings": [],
+    "input_type": "job_ad",
+    "rules_only": false,
+    "saved_sample": false,
+    "result_text": "Our verdict: Be careful\nWe found 1 warning sign. Check it before you apply.\nIt's not you, it's the ad.\nWhy:\n- Talent-pool wording: this is probably a ghost job, not an open vacancy. 'Talent pool' or 'future opportunities' wording usually means there's no job open right now. Your CV may sit on file without anyone reading it. Quoted from the text: \"There are no open coordinator roles right now, but by joining our talent pool you'll be first in line when future opportunities come up\"\nJob-search signals (signals, not a verdict): Posted 30+ days ago. Ghost jobs are more common at this age.\nWe checked for upfront fees, gift-card or crypto payments, fake checks, paid-task schemes, early requests for ID or bank details, free email addresses for named companies, group chats and chat apps, shortened links, hiring without an interview, pressure to hurry, AI-aimed lines, and ghost-job signs. We didn't check the company itself.\nChecked with fixed rules and an AI model. This is a set of warning signs, not a guarantee or professional advice. AI notes can be wrong, and a scam can pass every check. You decide whether to apply."
+   }
+  },
+  {
+   "id": "SAMPLE-3",
+   "text": "Hi! Your CV was shortlisted for our Remote Product Tester role, £320 a week for 10 hours of testing at home. No interview needed, you can start this Monday.\nBefore we send your first products, you need our Tester Starter Kit (£79, refunded with your first payment). Pay by bank transfer to the account our coordinator sends you.\nPlease message our coordinator on WhatsApp at +44 7700 900123 within 24 hours to keep your place.",
+   "taps": {
+    "who_contacted": "They contacted me",
+    "money_or_id": "Money asked",
+    "interview_stage": "None yet",
+    "posting_age_days": null
+   },
+   "result": {
+    "verdict": "Skip",
+    "verdict_sub": "We found 6 scam warning signs.",
+    "not_you": true,
+    "reasons": [
+     {
+      "rule_id": "SURE_ADVANCE_FEE",
+      "title": "Asks you to pay a fee or deposit to get or start the job",
+      "means": "Real employers don't charge you to get a job. Fees for training, starter kits, visas or 'processing' are among the most common job scams, even when they promise a refund.",
+      "quote": "you need our Tester Starter Kit (£79, refunded with your first payment)",
+      "source": "text",
+      "ai": false
+     },
+     {
+      "rule_id": "STRONG_LLM_PATTERN",
+      "title": "Matches a known scam pattern: receiving and re-sending parcels (reshipping)",
+      "means": "The job asks you to receive products at home and pay a fee first, which matches a known reshipping and product-tester scam pattern.",
+      "quote": "Before we send your first products",
+      "source": "ai",
+      "ai": true
+     },
+     {
+      "rule_id": "WEAK_CHAT_APP",
+      "title": "Moves you to a chat app",
+      "means": "Moving to a chat app takes you off the platform that could protect you and makes the sender hard to trace. Some real agencies do this too, so on its own it's a weak sign.",
+      "quote": "Please message our coordinator on WhatsApp at +44 7700 900123",
+      "source": "text",
+      "ai": false
+     },
+     {
+      "rule_id": "WEAK_NO_EMPLOYER_NAMED",
+      "title": "The text you pasted doesn't say who the employer is.",
+      "means": "Without a name, you can't check the job on the employer's own website.",
+      "quote": "",
+      "source": "text",
+      "ai": false
+     },
+     {
+      "rule_id": "WEAK_NO_INTERVIEW",
+      "title": "Says no interview is needed",
+      "means": "Real employers almost always talk to you before they hire you. Jobs that skip this step are common in scams.",
+      "quote": "No interview needed, you can start this Monday",
+      "source": "text",
+      "ai": false
+     },
+     {
+      "rule_id": "WEAK_URGENCY",
+      "title": "Pushes you to act fast",
+      "means": "Pressure to reply, pay or start right away leaves you less time to check the job.",
+      "quote": "within 24 hours to keep your place",
+      "source": "text",
+      "ai": false
+     }
+    ],
+    "weak_notes": [],
+    "notes": [],
+    "signals": [],
+    "found": {
+     "company": "",
+     "role": "Remote Product Tester",
+     "contact": "WhatsApp",
+     "posted": ""
+    },
+    "partial": false,
+    "truncated": false,
+    "what_we_checked": "We checked for upfront fees, gift-card or crypto payments, fake checks, paid-task schemes, early requests for ID or bank details, free email addresses for named companies, group chats and chat apps, shortened links, hiring without an interview, pressure to hurry, AI-aimed lines, and ghost-job signs. We didn't check the company itself.",
+    "message": "",
+    "fired": [
+     "SURE_ADVANCE_FEE",
+     "STRONG_LLM_PATTERN",
+     "WEAK_CHAT_APP",
+     "WEAK_NO_EMPLOYER_NAMED",
+     "WEAK_NO_INTERVIEW",
+     "WEAK_URGENCY"
+    ],
+    "extraction": "company=not named; role=Remote Product Tester; duty=test products at home; contact=WhatsApp; posted=not stated; stage=none yet; money_or_id=£79 Tester Starter Kit fee by bank transfer",
+    "raw_llm_output": "{\"language\":\"english\",\"input_type\":\"recruiter_message\",\"looks_partial\":false,\"employer_name\":\"\",\"role\":\"Remote Product Tester\",\"main_duty\":\"test products at home\",\"contact_channel\":\"WhatsApp\",\"posting_age_days\":null,\"interview_stage\":\"none_yet\",\"money_or_id_requested\":\"£79 Tester Starter Kit fee by bank transfer\",\"findings\":[{\"sign\":\"ADVANCE_FEE\",\"quote\":\"you need our Tester Starter Kit (£79, refunded with your first payment)\",\"note\":\"The message says you must pay £79 for a starter kit before getting products, even though it says this would be refunded.\",\"pattern\":\"none\"},{\"sign\":\"NO_INTERVIEW\",\"quote\":\"No interview needed, you can start this Monday.\",\"note\":\"The message says no interview is needed and that you can start this Monday.\",\"pattern\":\"none\"},{\"sign\":\"CHAT_APP\",\"quote\":\"Please message our coordinator on WhatsApp at [phone]\",\"note\":\"The message asks you to move the conversation to WhatsApp.\",\"pattern\":\"none\"},{\"sign\":\"URGENCY\",\"quote\":\"within 24 hours to keep your place\",\"note\":\"The message says you must reply within 24 hours or lose your place.\",\"pattern\":\"none\"},{\"sign\":\"SCAM_PATTERN\",\"quote\":\"Before we send your first products\",\"note\":\"The job asks you to receive products at home and pay a fee first, which matches a known reshipping and product-tester scam pattern.\",\"pattern\":\"reshipping\"}],\"criminal_record_check_fee\":{\"present\":false,\"after_interview_or_offer\":false,\"amount_gbp\":null,\"paid_to_official_or_employer\":false,\"asked_by_agency\":false,\"quote\":\"\"}}",
+    "usage": {
+     "input_tokens": 163,
+     "output_tokens": 576,
+     "cache_read_input_tokens": 3991,
+     "cache_creation_input_tokens": 0,
+     "latency_s": 4.54,
+     "cost_usd": 0.006485,
+     "model": "claude-sonnet-5-5"
+    },
+    "injection_noted": false,
+    "dropped_findings": [],
+    "input_type": "recruiter_message",
+    "rules_only": false,
+    "saved_sample": false,
+    "result_text": "Our verdict: Skip\nWe found 6 scam warning signs.\nIt's not you, it's the ad.\nWhy:\n- Asks you to pay a fee or deposit to get or start the job. Real employers don't charge you to get a job. Fees for training, starter kits, visas or 'processing' are among the most common job scams, even when they promise a refund. Quoted from the text: \"you need our Tester Starter Kit (£79, refunded with your first payment)\"\n- Matches a known scam pattern: receiving and re-sending parcels (reshipping) (AI note). The job asks you to receive products at home and pay a fee first, which matches a known reshipping and product-tester scam pattern. Quoted from the text: \"Before we send your first products\"\n- Moves you to a chat app. Moving to a chat app takes you off the platform that could protect you and makes the sender hard to trace. Some real agencies do this too, so on its own it's a weak sign. Quoted from the text: \"Please message our coordinator on WhatsApp at [phone]\"\n- The text you pasted doesn't say who the employer is. Without a name, you can't check the job on the employer's own website.\n- Says no interview is needed. Real employers almost always talk to you before they hire you. Jobs that skip this step are common in scams. Quoted from the text: \"No interview needed, you can start this Monday\"\n- Pushes you to act fast. Pressure to reply, pay or start right away leaves you less time to check the job. Quoted from the text: \"within 24 hours to keep your place\"\nWhat to do next: Stop replying, and don't send documents or money. Report it to the official fraud reporting service where you live. If you're a student, your university's student support or advice team can help you decide what to do next.\nWe checked for upfront fees, gift-card or crypto payments, fake checks, paid-task schemes, early requests for ID or bank details, free email addresses for named companies, group chats and chat apps, shortened links, hiring without an interview, pressure to hurry, AI-aimed lines, and ghost-job signs. We didn't check the company itself.\nChecked with fixed rules and an AI model. This is a set of warning signs, not a guarantee or professional advice. AI notes can be wrong, and a scam can pass every check. You decide whether to apply."
+   }
+  }
+ ]
+}
