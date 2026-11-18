@@ -21,6 +21,31 @@ from server import public_result  # noqa: E402
 
 REPO_URL = "https://github.com/Yellow-sparkle/job-ad-checker"
 OUT = os.path.join(ROOT, "docs", "index.html")
+DEMO_URL = "https://yellow-sparkle.github.io/job-ad-checker/"
+
+# Link-preview tags, so LinkedIn and other sites can show a title, text and picture for the demo link.
+# The picture is docs/og-image.png (1200x627). Image links must be full https addresses.
+PREVIEW_TITLE = "Job Ad Checker: is this job real?"
+PREVIEW_TEXT = ("Paste a job ad and see the scam warning signs in under a minute. "
+                "Free demo with three made-up sample ads.")
+PREVIEW_TAGS = """<meta name="description" content="{text}">
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Job Ad Checker">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{text}">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{url}og-image.png">
+<meta property="og:image:secure_url" content="{url}og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:image:alt" content="Job Ad Checker showing a Skip verdict with six scam warning signs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{text}">
+<meta name="twitter:image" content="{url}og-image.png">
+""".format(title=PREVIEW_TITLE, text=PREVIEW_TEXT, url=DEMO_URL)
 
 DEMO_NOTE = ("Demo: this page doesn't send anything anywhere. Pick one of the three sample ads to see a saved "
              "result from a real check. To check your own ads, run Job Ad Checker on your computer.")
@@ -83,6 +108,7 @@ def main():
     page = "\n".join(l for l in page.split("\n") if "fonts.googleapis.com" not in l and "fonts.gstatic.com" not in l)
     links = '<a href="%s">Get the code</a>' % REPO_URL
     page = page.replace('<a href="/terms">Terms</a><a href="/privacy">Privacy</a>', links)
+    page = page.replace("</title>\n", "</title>\n" + PREVIEW_TAGS, 1)
     first_script = page.index("<script")
     page = page[:first_script] + shim + page[first_script:]
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
