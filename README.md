@@ -1,3 +1,5 @@
+![tests](https://github.com/Yellow-sparkle/job-ad-checker/actions/workflows/tests.yml/badge.svg)
+
 # Job Ad Checker
 
 **Paste a job ad or recruiter message and get a calm verdict (No red flags found, Be careful, or Skip) in under a minute, with every warning sign quoted from the ad itself.**
